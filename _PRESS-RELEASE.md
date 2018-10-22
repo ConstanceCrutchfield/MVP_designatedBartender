@@ -21,24 +21,32 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  This app is for anyone who enjoys creating new cocktails. This app keeps a reference to user-created cocktails, along with ratings and reviews and recomendations of similar cocktails.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  This app allows users to create new cocktails, with a name, recipe, image. User can also search the database for cocktails by name and/or ingredient(s) to display that cocktail, and/or similar ones. User can rate and review cocktails and see other people's rating and rewiews. 
 
 ## Problem ##
   > Describe the problem your product solves.
+  DesignatedBartender solves the problem of being at a bar or hosting a party and trying to keep track of your coctail recipes. 
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  DesignatedBartender keeps record of all User cocktail recipes plus, provides recommendations to similar drinks.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  "For those who are always the designated bartender" -C. Crutchfield
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  Take a pic of your drink, post it, name your creation and save your recipe for next time!
+  Search cocktails by ingredient and see ratings from others who have made the drink!
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  Now, I wont forget the awesome cocktail I made at the last party, and I can share what I want to drink with any bartender.
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
