@@ -45,5 +45,3 @@ app.get('/items', (req, res) => {
     }
   });
 });
-
-
