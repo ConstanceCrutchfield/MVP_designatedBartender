@@ -4,7 +4,6 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'FILL_ME_IN',
   database : 'test',
 });
 
@@ -46,9 +45,10 @@ const searchItemsByIngred = (req, callback) => {
 
 const createItem = (req, callback) => {
   // insert new item into table
-  const q = 'insert into items (cocktailName, instructions, ingredients, thunbnail), values (?,?,?,?)';
-  connection.query(q, [req.cocktailName, req.ingredients, req.instructions, req.thunbnail], (err, results) => {
+  const q = 'insert into items (cocktailName, instructions, thumbnail) values (?,?,?)';
+  connection.query(q, [req.cocktailName, req.instructions, req.thumbnail], (err, results) => {
     if (err) {
+      console.log(err);
       callback(err, null);
     } else {
       callback(null, results);

@@ -9,6 +9,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '/../angular-client')));
 app.use(express.static(path.join(__dirname, '/../node_modules')));
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3000;
 
@@ -23,6 +24,7 @@ app.post('/create', (req, res) => {
   // request object must name, ingredients, instructions, image(optional)
   // new cocktail added to database
   // app view updated with new cocktail
+  console.log(req.body);
   db.createItem(req.body, (err, data) => {
     if (err) {
       res.sendStatus(500);
@@ -37,7 +39,8 @@ app.get('/search', (req, res) => {
   // search database for match
   // if no match, search theCocktailDB for similar drinks
   // update app view with search results
-  db.searchItems(req.body, (err, data) => {
+  // console.log(req.query, 'query');
+  db.searchItems(req.query.q, (err, data) => {
     if (err) {
       res.sendStatus(500);
     } else {
