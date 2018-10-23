@@ -2,4 +2,10 @@ body {
     background-image: url('https://images.unsplash.com/photo-1536626064922-49e65368b27d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8466e8bcd5abca2ca82b104353b22532&auto=format&fit=crop&w=934&q=80');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: scroll;
+    height: 200%;
+    padding: 10vw;
 }
+/* app {
+    margin: 20vw;
+} */

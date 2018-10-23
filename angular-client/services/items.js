@@ -1,7 +1,6 @@
 angular.module('app')
 // all requests from user to server here!
 // also user to database??
-
   .service('itemsService', function itemsService($http) {
     this.getAll = (callback) => {
       $http.get('/items')
@@ -14,11 +13,11 @@ angular.module('app')
           console.log(err, 'error getting /items');
         });
     };
-    this.create = (callback) => {
+    this.create = (params, callback) => {
       $http({
         method: 'post',
         url: '/create',
-        params: 'data from createDrink form',
+        params,
       })
         .then(({ data }) => {
           // functionality in app.js to update view

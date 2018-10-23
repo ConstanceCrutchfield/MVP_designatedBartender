@@ -3,7 +3,6 @@ const axios = require('axios');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database-mysql');
-const requestHandler = require('./requestHandler');
 
 const app = express();
 
@@ -49,45 +48,22 @@ app.get('/search', (req, res) => {
   });
 });
 
-app.post('/review', (req, res) => {
-  // request object needs drink id/name, and user inputed review
-  // review is added to cocktail in database
-  // reviews for each item stored on join table?
-  // update app view with new reviews
-  db.addReview(req.body, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
-});
+// app.post('/review', (req, res) => {
+//   // request object needs drink id/name, and user inputed review
+//   // review is added to cocktail in database
+//   // reviews for each item stored on join table?
+//   // update app view with new reviews
+//   db.addReview(req.body, (err, data) => {
+//     if (err) {
+//       res.sendStatus(500);
+//     } else {
+//       res.json(data);
+//     }
+//   });
+// });
 
 app.get('/items', (req, res) => {
-  // get all items from database
-  // axios({
-  //   method: 'get',
-  //   url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php',
-  // }).then((response) => {
-  //   console.log(response);
-  //   const drink = response[0];
-  //   db.createItem({
-  //     cocktailName: drink.strDrink,
-  //     instructions: drink.strInstructions,
-  //     thumbnail: drink.strDrinkThumb,
-  //     ingredients: drink.strIngredient1,
-  //   }, (err, data) => {
-  //     if (err) {
-  //       console.log('error creating item', err);
-  //     } else {
-  //       console.log(data);
-  //       res.json(data);
-  //     }
-  //   });
-  // }).catch((error) => {
-  //   console.log(error, 'error getting item');
-  // });
-  /////////////
+  // get all items from db
   db.selectAll((err, data) => {
     if (err) {
       console.log(err);

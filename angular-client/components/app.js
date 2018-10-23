@@ -3,6 +3,7 @@ angular.module('app')
     itemsService.getAll((data) => {
       this.items = data;
     });
+    this.image = 'https://www.thecocktaildb.com/images/media/drink/sot8v41504884783.jpg';
   })
   .component('app', {
     bindings: {},

@@ -1,42 +1,47 @@
 <div>
     <div class="page-header">
         <h1>
-            LayoutIt! <small>Interface Builder for Bootstrap</small>
+            Designated Bartender <small>cocktail recipe book</small>
         </h1>
     </div>
     <form role="form">
         <div class="form-group">
 
-            <label for="exampleInputEmail1">
-                Email address
+            <label for="cocktailNameInput">
+                Cocktail name
             </label>
-            <input type="email" class="form-control" id="exampleInputEmail1" />
+            <input ng-model="name" type="text" class="form-control" id="cocktailNameInput" />
         </div>
+
         <div class="form-group">
 
-            <label for="exampleInputPassword1">
-                Password
+            <label for="ingredients">
+                Ingredients
             </label>
-            <input type="password" class="form-control" id="exampleInputPassword1" />
+            <input (ngModel)]="model.ingredients" type="text" class="form-control" id="ingredients" />
         </div>
+
+        <div class="form-group">
+        
+            <label for="instructions">
+                Instructions
+            </label>
+            <input [(ngModel)]="model.instructions" type="text" class="form-control" id="instructions" />
+        </div>
+
         <div class="form-group">
 
-            <label for="exampleInputFile">
-                File input
+            <label for="imageUpload">
+                Upload Image
             </label>
-            <input type="file" class="form-control-file" id="exampleInputFile" />
-            <p class="help-block">
-                Example block-level help text here.
-            </p>
+            <input type="file" class="form-control-file" id="ImageUpload" />
         </div>
-        <div class="checkbox">
 
-            <label>
-                <input type="checkbox" /> Check me out
-            </label>
-        </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary create" ng-click="$ctrl.onClick('data from input fields!')">
             Submit
         </button>
+        <p class="help-block">
+            Create your new cocktail!
+        </p>
     </form>
 </div>
