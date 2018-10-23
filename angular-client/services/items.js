@@ -11,7 +11,7 @@ angular.module('app')
           }
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err, 'error getting /items');
         });
     };
     this.create = (callback) => {
@@ -36,11 +36,10 @@ angular.module('app')
       $http({
         method: 'get',
         url: '/search',
-        params: 'data from createDrink form',
+        params: 'data from search form',
       })
         .then(({ data }) => {
           // functionality in app.js to update view
-          // add new item to db
           if (callback) {
             callback(data);
           }
@@ -54,11 +53,11 @@ angular.module('app')
       $http({
         method: 'post',
         url: '/review',
-        params: 'data from createDrink form',
+        params: 'data from review form',
       })
         .then(({ data }) => {
           // functionality in app.js to update view
-          // add new item to db
+          // add new review to db
           if (callback) {
             callback(data);
           }

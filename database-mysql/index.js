@@ -7,10 +7,11 @@ const connection = mysql.createConnection({
   password : 'FILL_ME_IN',
   database : 'test',
 });
+
 // all functionality of database queries here!
 
 const selectAll = (callback) => {
-  connection.query('SELECT * FROM items', (err, results, fields) => {
+  connection.query('SELECT * FROM items', (err, results) => {
     if (err) {
       callback(err, null);
     } else {
@@ -19,9 +20,22 @@ const selectAll = (callback) => {
   });
 };
 
-const searchItems = (callback) => {
+const searchItemsByName = (req, callback) => {
   // query items table for name or ingredient
-  connection.query('select * from items where name = ? or ingredient = ?', [req.name, req.ingred], (err, results) => {
+  const q = 'select * from items where cocktailName = ?';
+  connection.query(q, [req.name, req.cocktailName], (err, results) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+const searchItemsByIngred = (req, callback) => {
+  // query item_ingred table for ingredient
+  const q = 'select * from item_ingred where cocktailName = ?';
+  connection.query(q, [req.name, req.cocktailName], (err, results) => {
     if (err) {
       callback(err, null);
     } else {
@@ -32,7 +46,8 @@ const searchItems = (callback) => {
 
 const createItem = (req, callback) => {
   // insert new item into table
-  connection.query('insert into items (name, instructions, ingred, image), values (?,?,?,?)', [req.name, req.ingred], (err, results) => {
+  const q = 'insert into items (cocktailName, instructions, ingredients, thunbnail), values (?,?,?,?)';
+  connection.query(q, [req.cocktailName, req.ingredients, req.instructions, req.thunbnail], (err, results) => {
     if (err) {
       callback(err, null);
     } else {
@@ -54,6 +69,7 @@ const addReview = (req, callback) => {
 
 
 module.exports.selectAll = selectAll;
-module.exports.searchItems = searchItems;
+module.exports.searchItemsByName = searchItemsByName;
+module.exports.searchItemsByIngred = searchItemsByIngred;
 module.exports.createItem = createItem;
 module.exports.addReview = addReview;
