@@ -48,21 +48,21 @@ angular.module('app')
         });
     };
 
-    this.addReview = (callback) => {
-      $http({
-        method: 'post',
-        url: '/review',
-        params: 'data from review form',
-      })
-        .then(({ data }) => {
-          // functionality in app.js to update view
-          // add new review to db
-          if (callback) {
-            callback(data);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+    // this.addReview = (callback) => {
+    //   $http({
+    //     method: 'post',
+    //     url: '/review',
+    //     params: 'data from review form',
+    //   })
+    //     .then(({ data }) => {
+    //       // functionality in app.js to update view
+    //       // add new review to db
+    //       if (callback) {
+    //         callback(data);
+    //       }
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // };
   });

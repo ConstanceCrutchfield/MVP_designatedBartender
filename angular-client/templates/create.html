@@ -10,7 +10,7 @@
             <label for="cocktailNameInput">
                 Cocktail name
             </label>
-            <input ng-model="name" type="text" class="form-control" id="cocktailNameInput" />
+            <input ng-model="$ctrl.newDrink.cocktailName" type="text" class="form-control" id="cocktailNameInput" />
         </div>
 
         <div class="form-group">
@@ -18,7 +18,7 @@
             <label for="ingredients">
                 Ingredients
             </label>
-            <input (ngModel)]="model.ingredients" type="text" class="form-control" id="ingredients" />
+            <input ng-model="$ctrl.newDrink.ingredients" type="text" class="form-control" id="ingredients" />
         </div>
 
         <div class="form-group">
@@ -26,7 +26,7 @@
             <label for="instructions">
                 Instructions
             </label>
-            <input [(ngModel)]="model.instructions" type="text" class="form-control" id="instructions" />
+            <input ng-model="$ctrl.newDrink.instructions" type="text" class="form-control" id="instructions" />
         </div>
 
         <div class="form-group">
@@ -34,10 +34,10 @@
             <label for="imageUpload">
                 Upload Image
             </label>
-            <input type="file" class="form-control-file" id="ImageUpload" />
+            <input ng-model="$ctrl.newDrink.thumbnail" type="file" class="form-control-file" id="imageUpload" />
         </div>
 
-        <button type="submit" class="btn btn-primary create" ng-click="$ctrl.onClick('data from input fields!')">
+        <button type="submit" class="btn btn-primary create" ng-click="$ctrl.onClick()">
             Submit
         </button>
         <p class="help-block">

@@ -1,4 +1,3 @@
-DROP DATABASE test;
 
 CREATE DATABASE IF NOT EXISTS test;
 
@@ -11,6 +10,7 @@ CREATE TABLE items (
   thumbnail varchar(200),
   rating int(10) DEFAULT 5,
   PRIMARY KEY (ID)
+  UNIQUE (cocktailName)
 );
 
 CREATE TABLE ingreds (

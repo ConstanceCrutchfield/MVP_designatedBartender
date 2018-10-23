@@ -43,33 +43,46 @@ const searchItemsByIngred = (req, callback) => {
   });
 };
 
-const createItem = (req, callback) => {
+const createItem = (req) => {
   // insert new item into table
-  const q = 'insert into items (cocktailName, instructions, thumbnail) values (?,?,?)';
-  connection.query(q, [req.cocktailName, req.instructions, req.thumbnail], (err, results) => {
+  // add indredients to ingredient table
+  console.log(req, 'reached db');
+  const qItem = 'insert into items (cocktailName, instructions, thumbnail) values (?,?,?)';
+  const ingreds = req.ingredients.split(',');
+  const qIngred = 'insert into ingreds (ingredName) values(?)';
+  connection.query(qItem, [req.cocktailName, req.instructions, req.thumbnail], (err, results) => {
     if (err) {
       console.log(err);
-      callback(err, null);
     } else {
-      callback(null, results);
+      console.log(results);
     }
+  });
+  // insert each ingredient into ingred table
+  ingreds.forEach((ingred) => {
+    connection.query(qIngred, [ingred], (err, results) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(results);
+      }
+    });
   });
 };
 
-const addReview = (req, callback) => {
-  // update rewiew for item
-  connection.query('update items set reviews=? where name =?', [req.review, req.name], (err, results) => {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, results);
-    }
-  });
-};
+// const addReview = (req, callback) => {
+//   // update rewiew for item
+//   connection.query('update items set reviews=? where name =?', [req.review, req.name], (err, results) => {
+//     if (err) {
+//       callback(err, null);
+//     } else {
+//       callback(null, results);
+//     }
+//   });
+// };
 
 
 module.exports.selectAll = selectAll;
 module.exports.searchItemsByName = searchItemsByName;
 module.exports.searchItemsByIngred = searchItemsByIngred;
 module.exports.createItem = createItem;
-module.exports.addReview = addReview;
+// module.exports.addReview = addReview;

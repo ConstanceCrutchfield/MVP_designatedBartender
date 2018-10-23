@@ -23,8 +23,8 @@ app.post('/create', (req, res) => {
   // request object must name, ingredients, instructions, image(optional)
   // new cocktail added to database
   // app view updated with new cocktail
-  console.log(req.body);
-  db.createItem(req.body, (err, data) => {
+  console.log(req.query, 'body at endpoint');
+  db.createItem(req.query, (err, data) => {
     if (err) {
       res.sendStatus(500);
     } else {

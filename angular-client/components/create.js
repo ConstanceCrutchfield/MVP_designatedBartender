@@ -3,9 +3,10 @@ angular.module('app')
     bindings: {
     },
     controller(itemsService) {
-      this.onClick = (input) => {
-        console.log(input);
-        itemsService.create(input);
+      this.newDrink = {};
+      this.onClick = () => {
+        console.log(this.newDrink, 'input from create form');
+        itemsService.create(this.newDrink);
       };
     },
     templateUrl: '/templates/create.html',
