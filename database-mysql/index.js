@@ -30,7 +30,7 @@ const searchItems = (callback) => {
   });
 };
 
-const addItem = (callback) => {
+const createItem = (req, callback) => {
   // insert new item into table
   connection.query('insert into items (name, instructions, ingred, image), values (?,?,?,?)', [req.name, req.ingred], (err, results) => {
     if (err) {
@@ -41,7 +41,7 @@ const addItem = (callback) => {
   });
 };
 
-const addReview = (callback) => {
+const addReview = (req, callback) => {
   // update rewiew for item
   connection.query('update items set reviews=? where name =?', [req.review, req.name], (err, results) => {
     if (err) {
@@ -55,5 +55,5 @@ const addReview = (callback) => {
 
 module.exports.selectAll = selectAll;
 module.exports.searchItems = searchItems;
-module.exports.addItem = addItem;
+module.exports.createItem = createItem;
 module.exports.addReview = addReview;

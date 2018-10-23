@@ -31,4 +31,40 @@ angular.module('app')
           console.log(err);
         });
     };
+
+    this.search = (callback) => {
+      $http({
+        method: 'get',
+        url: '/search',
+        params: 'data from createDrink form',
+      })
+        .then(({ data }) => {
+          // functionality in app.js to update view
+          // add new item to db
+          if (callback) {
+            callback(data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    this.addReview = (callback) => {
+      $http({
+        method: 'post',
+        url: '/review',
+        params: 'data from createDrink form',
+      })
+        .then(({ data }) => {
+          // functionality in app.js to update view
+          // add new item to db
+          if (callback) {
+            callback(data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
   });

@@ -16,7 +16,7 @@ app.listen(PORT, '0.0.0.0', () => {
 });
 
 // all requests from server to database here!
-// all requests to API from here using request handlers! 
+// all requests to API from here using request handlers!
 
 app.post('/create', (req, res) => {
   // request object must name, ingredients, instructions, image(optional)
@@ -33,10 +33,10 @@ app.get('/search', (req, res) => {
 
 });
 
-app.post('/rate', (req, res) => {
+app.post('/review', (req, res) => {
   // request object needs drink id/name, and user inputed review
   // review is added to cocktail in database
-    // reviews for each item stored on array
+    // reviews for each item stored on join table?
   // update app view with new reviews
 
 });
