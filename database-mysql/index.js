@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
   password : 'FILL_ME_IN',
   database : 'test',
 });
-// all functionality od database queries here!
+// all functionality of database queries here!
 
 const selectAll = (callback) => {
   connection.query('SELECT * FROM items', (err, results, fields) => {
@@ -19,4 +19,41 @@ const selectAll = (callback) => {
   });
 };
 
+const searchItems = (callback) => {
+  // query items table for name or ingredient
+  connection.query('select * from items where name = ? or ingredient = ?', [req.name, req.ingred], (err, results) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+const addItem = (callback) => {
+  // insert new item into table
+  connection.query('insert into items (name, instructions, ingred, image), values (?,?,?,?)', [req.name, req.ingred], (err, results) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+const addReview = (callback) => {
+  // update rewiew for item
+  connection.query('update items set reviews=? where name =?', [req.review, req.name], (err, results) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+
 module.exports.selectAll = selectAll;
+module.exports.searchItems = searchItems;
+module.exports.addItem = addItem;
+module.exports.addReview = addReview;

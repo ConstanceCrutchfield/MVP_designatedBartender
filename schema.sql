@@ -6,8 +6,10 @@ USE test;
 
 CREATE TABLE items (
   id int NOT NULL AUTO_INCREMENT,
-  quantity integer NOT NULL,
-  description varchar(50) NOT NULL,
+  cocktailName varchar(50) NOT NULL,
+  instructions varchar(200) NOT NULL,
+  ingredients varchar(100) NOT NULL,
+  thumbnail varchar(100) DEFAULT 'add imageurl for missing image',
   PRIMARY KEY (ID)
 );
 
