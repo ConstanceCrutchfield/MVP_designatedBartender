@@ -8,3 +8,5 @@ angular.module('app')
     },
     templateUrl: '/templates/list-item.html',
   });
+
+// items must have option to add reviews

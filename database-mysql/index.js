@@ -7,6 +7,7 @@ const connection = mysql.createConnection({
   password : 'FILL_ME_IN',
   database : 'test',
 });
+// all functionality od database queries here!
 
 const selectAll = (callback) => {
   connection.query('SELECT * FROM items', (err, results, fields) => {
