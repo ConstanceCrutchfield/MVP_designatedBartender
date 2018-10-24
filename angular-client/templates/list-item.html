@@ -1,3 +1,12 @@
-<div>
-  {{$ctrl.item.description}}
-</div>
+<li class="list-item list-inline-item cocktail">
+  <div>
+    <img class="media-object" ng-src="{{ $ctrl.video.snippet.thumbnails.default.url }}" />
+  </div>
+  <div class="media-body">
+    <div class="list-item-name"><h4>{{ $ctrl.item.cocktailName }}</h4></div>
+    <ul ingredients="$ctrl.item.ingredients">
+      <li class="list-item list-inline-item ingredient" ng-repeat="ingredient in $ctrl.item.ingredients" ingredient=ingredient></li>
+    </ul>
+    <div class="list-item-instructions">{{ $ctrl.item.instructions }}</div>
+  </div>
+</li>

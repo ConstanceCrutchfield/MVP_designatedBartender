@@ -7,12 +7,20 @@ body {
     padding: 10vw;
 }
 
+.create {
+    margin: 0vw 4vw;
+}
+
 .carousel .carousel-item {
-  height: 50vh;
+  height: 40vh;
 }
 .carousel-item img{
-    height: 200px;
+    height: 40vh;
 }
-/* app {
-    margin: 20vw;
-} */
+ .list {
+    margin-top: 5vh;
+ }
+
+ .search {
+    margin-top: 5vh; 
+ }
