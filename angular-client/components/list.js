@@ -5,7 +5,7 @@ angular.module('app')
       image: '<',
     },
     controller() {
-
+      console.log(this.items, 'list items');
     },
     templateUrl: '/templates/list.html',
   });

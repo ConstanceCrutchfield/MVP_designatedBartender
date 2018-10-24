@@ -14,7 +14,12 @@ angular.module('app')
     }.bind(this);
   })
   .component('app', {
-    bindings: {},
+    bindings: {
+      items: '<',
+    },
+    $onInit: () => {
+      // app renders list before getting items back!
+    },
     controller: 'AppCtrl',
     templateUrl: '/templates/app.html',
   });

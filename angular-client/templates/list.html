@@ -51,31 +51,7 @@
   </div><img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="img-thumbnail" />
   <ul>
     <h4> List Component </h4>
-    There are {{$ctrl.items.length}} items.
-    <list-item ng-repeat="item in $ctrl.items" item=item />
-    <li class="list-item list-inline-item">
-      Lorem ipsum dolor sit amet
-    </li>
-    <li class="list-item list-inline-item">
-      Consectetur adipiscing elit
-    </li>
-    <li class="list-item list-inline-item">
-      Integer molestie lorem at massa
-    </li>
-    <li class="list-item list-inline-item">
-      Facilisis in pretium nisl aliquet
-    </li>
-    <li class="list-item list-inline-item">
-      Nulla volutpat aliquam velit
-    </li>
-    <li class="list-item list-inline-item">
-      Faucibus porta lacus fringilla vel
-    </li>
-    <li class="list-item list-inline-item">
-      Aenean sit amet erat nunc
-    </li>
-    <li class="list-item list-inline-item">
-      Eget porttitor lorem
-    </li>
+    There are {{ $ctrl.items.length }} items.
+    <list-item class="list-item list-inline-item" ng-repeat="item in $ctrl.items" item=item />
   </ul>
 </div>
