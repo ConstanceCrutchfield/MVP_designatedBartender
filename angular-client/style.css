@@ -5,6 +5,10 @@ body {
     background-attachment: scroll;
     height: 200%;
     padding: 10vw;
+    
+}
+* {
+    color: white;
 }
 
 .create {
