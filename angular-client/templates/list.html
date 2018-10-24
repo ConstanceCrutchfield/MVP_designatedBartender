@@ -61,7 +61,7 @@
     <div class='list'>
       <ul>
         <h2> Cocktail List </h2>
-        <list-item class="list-item list-inline-item" ng-repeat="item in $ctrl.items" item=item />
+        <list-item feature="$ctrl.feature" ng-click="$ctrl.onClick()" class="list-item list-inline-item" ng-repeat="item in $ctrl.items" item=item />
       </ul>
     </div>
 </div>

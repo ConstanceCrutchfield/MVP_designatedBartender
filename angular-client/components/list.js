@@ -2,10 +2,10 @@ angular.module('app')
   .component('list', {
     bindings: {
       items: '<',
-      image: '<',
+      feature: '<',
     },
     controller() {
-      console.log(this.items, 'list items');
+
     },
     templateUrl: '/templates/list.html',
   });

@@ -49,6 +49,10 @@ angular.module('app')
         });
     };
 
+    this.getIngreds = (params, callback) => {
+      
+    };
+
     // this.addReview = (callback) => {
     //   $http({
     //     method: 'post',

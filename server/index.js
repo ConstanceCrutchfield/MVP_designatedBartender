@@ -50,17 +50,65 @@ app.get('/search', (req, res) => {
     });
   } else
   if (req.query.ingredient) {
-    db.searchItemsByIngred(req.query.ingredient, (err, data) => {
-      if (err) {
-        res.sendStatus(500);
-      } else {
-        console.log(`searched for ${req.query.ingredient}`);
-        res.json(data);
-      }
-    });
+    axios({
+      method: 'get',
+      url: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${req.query.ingredient}`,
+    })
+      .then((data) => {
+        // data is object.drinks = array of drinks with name, id, thumbnail
+        // search for ingreds and instructions
+        console.log(data.data.drinks);
+        data.data.drinks.forEach((drink) => {
+          axios({
+            method: 'get',
+            url: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`,
+          }).then((response) => {
+            console.log(response.data, 'resoinse line 66');
+            const item = response.data.drinks[0];
+            db.createItem({
+              cocktailName: item.strDrink,
+              instructions: item.strInstructions,
+              thumbnail: item.strDrinkThumb,
+              ingredients: `${item.strIngredient1}, ${item.strIngredient2}, ${item.strIngredient3}, ${item.strIngredient4}`,
+            }, (err) => {
+              if (err) {
+                res.sendStatus(500);
+              }
+            });
+          })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
+      })
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // db.searchItemsByIngred(req.query.ingredient, (err, data) => {
+    //   if (err) {
+    //     res.sendStatus(500);
+    //   } else {
+    //     console.log(`searched for ${req.query.ingredient}`);
+    //     res.json(data);
+    //   }
+    // });
   } else {
     res.sendStatus(500);
   }
+});
+
+app.get('/ingred', (req, res) => {
+  console.log(req, 'ingredient search request server line 104');
+  db.searchIngreds(req.query.ingredient, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 // app.post('/review', (req, res) => {

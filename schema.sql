@@ -16,6 +16,7 @@ CREATE TABLE items (
 CREATE TABLE ingreds (
   ingredName varchar(100) NOT NULL,
   ingredId int NOT NULL AUTO_INCREMENT,
+  cocktailKey varchar(50) NOT NULL,
   amount varchar(50),
   PRIMARY KEY (ingredId),  
   UNIQUE (ingredName)
