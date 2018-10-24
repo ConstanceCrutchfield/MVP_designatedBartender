@@ -37,15 +37,29 @@ app.get('/search', (req, res) => {
   // request object must have ingredient or drink name to query
   // search database for match
   // if no match, search theCocktailDB for similar drinks
-  // update app view with search results
-  // console.log(req.query, 'query');
-  db.searchItems(req.query.q, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
+  console.log(req.query, 'query');
+  if (req.query.cocktailName) {
+    db.searchItemsByName(req.query.cocktailName, (err, data) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        console.log(`searched for ${req.query.cocktailName}`);
+        res.json(data);
+      }
+    });
+  }
+  if (req.query.ingredient) {
+    db.searchItemsByIngred(req.query.ingredient, (err, data) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        console.log(`searched for ${req.query.ingredient}`);
+        res.json(data);
+      }
+    });
+  } else {
+    res.sendStatus(500);
+  }
 });
 
 // app.post('/review', (req, res) => {

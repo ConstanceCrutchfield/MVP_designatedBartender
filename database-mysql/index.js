@@ -22,19 +22,20 @@ const selectAll = (callback) => {
 const searchItemsByName = (req, callback) => {
   // query items table for name or ingredient
   const q = 'select * from items where cocktailName = ?';
-  connection.query(q, [req.name, req.cocktailName], (err, results) => {
+  connection.query(q, [req], (err, results) => {
     if (err) {
       callback(err, null);
     } else {
+      console.log(results, 'results from query line 29 db');
       callback(null, results);
     }
   });
 };
 
 const searchItemsByIngred = (req, callback) => {
-  // query item_ingred table for ingredient
+  // query join table
   const q = 'select * from item_ingred where cocktailName = ?';
-  connection.query(q, [req.name, req.cocktailName], (err, results) => {
+  connection.query(q, [req.ingredient], (err, results) => {
     if (err) {
       callback(err, null);
     } else {

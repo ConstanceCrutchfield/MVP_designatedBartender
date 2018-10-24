@@ -31,14 +31,15 @@ angular.module('app')
         });
     };
 
-    this.search = (callback) => {
+    this.search = (params, callback) => {
       $http({
         method: 'get',
         url: '/search',
-        params: 'data from search form',
+        params,
       })
         .then(({ data }) => {
           // functionality in app.js to update view
+          console.log(data, 'services search line 42');
           if (callback) {
             callback(data);
           }

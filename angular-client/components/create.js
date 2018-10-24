@@ -6,7 +6,10 @@ angular.module('app')
       this.newDrink = {};
       this.onClick = () => {
         console.log(this.newDrink, 'input from create form');
-        itemsService.create(this.newDrink);
+        itemsService.create(this.newDrink)
+          .then(() => {
+            this.newDrink = {};
+          });
       };
     },
     templateUrl: '/templates/create.html',
