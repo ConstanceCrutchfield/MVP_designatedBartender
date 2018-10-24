@@ -37,7 +37,7 @@ angular.module('app')
         url: '/search',
         params,
       })
-        .then(({ data }) => {
+        .then((data) => {
           // functionality in app.js to update view
           console.log(data, 'services search line 42');
           if (callback) {

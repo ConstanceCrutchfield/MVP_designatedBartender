@@ -44,10 +44,11 @@ app.get('/search', (req, res) => {
         res.sendStatus(500);
       } else {
         console.log(`searched for ${req.query.cocktailName}`);
-        res.json(data);
+        console.log(data);
+        res.send(data);
       }
     });
-  }
+  } else
   if (req.query.ingredient) {
     db.searchItemsByIngred(req.query.ingredient, (err, data) => {
       if (err) {
