@@ -10,7 +10,6 @@ CREATE TABLE items (
   thumbnail varchar(200),
   rating int(10) DEFAULT 5,
   PRIMARY KEY (ID)
-  UNIQUE (cocktailName)
 );
 
 CREATE TABLE ingreds (
@@ -22,16 +21,12 @@ CREATE TABLE ingreds (
   UNIQUE (ingredName)
 );
 
-CREATE TABLE item_ingred (
-  itemId int NOT NULL, 
-  ingredId INT NOT NULL, 
-  PRIMARY KEY (itemId,ingredId)
-);
+-- CREATE TABLE item_ingred (
+--   itemId int NOT NULL, 
+--   ingredId INT NOT NULL, 
+--   PRIMARY KEY (itemId,ingredId)
+-- );
 
-INSERT INTO items 
-  (cocktailName, thumbnail, instructions)
-VALUES 
-  ("Irish Spring", "https://www.thecocktaildb.com/images/media/drink/sot8v41504884783.jpg" ,"Pour all ingredients (except orange slice and cherry) into a collins glass over ice cubes. Garnish with the slice of orange, add the cherry on top, and serve.")
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql

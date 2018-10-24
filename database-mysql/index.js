@@ -50,7 +50,7 @@ const createItem = (req) => {
   console.log(req, 'reached db');
   const qItem = 'insert into items (cocktailName, instructions, thumbnail) values (?,?,?)';
   const ingreds = req.ingredients.split(',');
-  const qIngred = 'insert into ingreds (ingredName, cocktailKey) values(?),?';
+  const qIngred = 'insert into ingreds (ingredName, cocktailKey) values(?,?)';
   connection.query(qItem, [req.cocktailName, req.instructions, req.thumbnail], (err, results) => {
     if (err) {
       console.log(err);

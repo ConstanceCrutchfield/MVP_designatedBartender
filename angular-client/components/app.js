@@ -1,7 +1,8 @@
 angular.module('app')
   .controller('AppCtrl', (itemsService) => {
     itemsService.getAll((data) => {
-      this.items = data;
+      this.items = data.slice(-5);
+      console.log(this.items);
     });
     this.image = 'https://www.thecocktaildb.com/images/media/drink/sot8v41504884783.jpg';
     this.searchResults = function (input) {
