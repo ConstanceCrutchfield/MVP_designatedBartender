@@ -1,6 +1,36 @@
+<<<<<<< HEAD
 <div>
     <div>
         <h4><em>search</em></h4>
         <search input="$ctrl.items" />
+=======
+<div class="row search">
+    <div class="col-md-12">
+        <form role="form" class="form-inline">
+            <div class="form-group col-md-4">
+
+                <label for="searchIngredientForm">
+                    Search by ingredient
+                </label>
+                <input ng-model="$ctrl.searched.ingredient" type="text" class="form-control" id="searchIngredientForm" />
+            </div>
+            <div class="form-group col-md-4">
+
+                <label for="searchNameForm">
+                    Search by name
+                </label>
+                <input ng-model="$ctrl.searched.cocktailName" type="text" class="form-control" id="searchNameForm" />
+            </div>
+
+            <div class="col-md-4">
+                <!-- <p class="help-block">
+                    Find your drinks!
+                </p> -->
+                <button type="submit" class="btn btn-primary searchBtn" ng-click="$ctrl.onClick()">
+                    Search
+                </button>
+            </div>
+        </form>
+>>>>>>> new-app
     </div>
 </div>

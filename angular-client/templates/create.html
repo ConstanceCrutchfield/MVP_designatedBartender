@@ -1,0 +1,48 @@
+<div class='create'>
+    <div class="page-header">
+        <h1>
+            Designated Bartender
+        </h1>
+        <h3>Cocktail Recipe Book</h3>
+    </div>
+    <form role="form">
+        <div class="form-group">
+
+            <label for="cocktailNameInput">
+                Cocktail name
+            </label>
+            <input ng-model="$ctrl.newDrink.cocktailName" type="text" class="form-control" id="cocktailNameInput" />
+        </div>
+
+        <div class="form-group">
+
+            <label for="ingredients">
+                Ingredients
+            </label>
+            <input ng-model="$ctrl.newDrink.ingredients" type="text" class="form-control" id="ingredients" />
+        </div>
+
+        <div class="form-group">
+        
+            <label for="instructions">
+                Instructions
+            </label>
+            <input ng-model="$ctrl.newDrink.instructions" type="text" class="form-control" id="instructions" />
+        </div>
+
+        <div class="form-group">
+
+            <label for="imageUpload">
+                Upload Image
+            </label>
+            <input ng-model="$ctrl.newDrink.thumbnail" type="file" class="form-control-file" id="imageUpload" />
+        </div>
+
+        <button type="submit" class="btn btn-primary createBtn" ng-click="$ctrl.onClick()">
+            Submit
+        </button>
+        <p class="help-block">
+            Create your new cocktail!
+        </p>
+    </form>
+</div>
