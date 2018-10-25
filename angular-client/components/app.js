@@ -1,10 +1,10 @@
 angular.module('app')
-  .controller('AppCtrl', (itemsService) => {
+  .controller('AppCtrl', function appCtrl(itemsService) {
     itemsService.getAll((data) => {
+      // maybe reverse so new gets added to top
       this.items = data.slice(-5);
       console.log(this.items);
     });
-    this.image = 'https://www.thecocktaildb.com/images/media/drink/sot8v41504884783.jpg';
     this.searchResults = function (input) {
       // search and rerender page add updateList to search as callback
       // rerender page with 5 from search
