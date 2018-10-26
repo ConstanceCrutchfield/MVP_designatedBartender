@@ -2,7 +2,7 @@ angular.module('app')
   .controller('AppCtrl', function appCtrl(itemsService) {
     itemsService.getAll((data) => {
       // maybe reverse so new gets added to top
-      this.items = data.slice(-5);
+      this.items = data.slice(-7);
       console.log(this.items);
     });
     this.searchResults = function (input) {
@@ -23,9 +23,6 @@ angular.module('app')
   })
   .component('app', {
     bindings: {
-    },
-    $onInit: () => {
-      // app renders list before getting items back!
     },
     controller: 'AppCtrl',
     templateUrl: '/templates/app.html',
