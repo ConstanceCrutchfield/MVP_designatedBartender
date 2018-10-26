@@ -45,7 +45,7 @@ app.get('/search', (req, res) => {
       } else {
         console.log(`searched for ${req.query.cocktailName}`);
         console.log(data);
-        res.send(data);
+        res.send(data.slice(-5));
       }
     });
   } else
@@ -58,12 +58,11 @@ app.get('/search', (req, res) => {
         // data is object.drinks = array of drinks with name, id, thumbnail
         // search for ingreds and instructions
         console.log(data.data.drinks);
-        data.data.drinks.forEach((drink) => {
+        data.data.drinks.slice(-5).forEach((drink) => {
           axios({
             method: 'get',
             url: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`,
           }).then((response) => {
-            console.log(response.data, 'resoinse line 66');
             const item = response.data.drinks[0];
             db.createItem({
               cocktailName: item.strDrink,
@@ -80,8 +79,10 @@ app.get('/search', (req, res) => {
               console.log(err);
             });
         });
+        return data.data.drinks.slice(-5);
       })
       .then((data) => {
+        console.log(data, 'from server line 85');
         res.send(data);
       })
       .catch((err) => {

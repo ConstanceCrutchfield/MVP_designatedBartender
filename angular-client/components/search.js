@@ -7,10 +7,13 @@ angular.module('app')
     controller() {
       this.searched = {};
       this.onClick = () => {
-        this.result(this.searched)
-          .then(() => {
-            this.searched = {};
-          });
+        Promise.resolve(this.result(this.searched))
+        .then(() => {
+          // clear forms
+          this.searched.ingredient = '';
+          this.searched.cocktailName = '';
+        });
+        
       };
     },
     templateUrl: '/templates/search.html',

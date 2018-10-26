@@ -2,24 +2,29 @@ angular.module('app')
   .controller('AppCtrl', function appCtrl(itemsService) {
     itemsService.getAll((data) => {
       // maybe reverse so new gets added to top
-      this.items = data.slice(-7);
+      this.items = data.slice(-6);
       console.log(this.items);
     });
-    this.searchResults = function (input) {
+    this.searchResults = (input) => {
       // search and rerender page add updateList to search as callback
       // rerender page with 5 from search
-      itemsService.search(input);
-    }.bind(this);
-    this.updateList = function (items) {
+      Promise.resolve(itemsService.search(input))
+      .then((res) => {
+        console.log(res, 'data from search');
+        this.updateList(res);
+      });
+    };
+    this.updateList = (items) => {
       this.items = items;
-    }.bind(this);
-    this.featureItem = function (itemName) {
+    };
+    this.featureItem = (itemName) => {
+      // function that adds ingredient list to item
       itemsService.getIngreds(itemName)
         .then((response) => {
           // send response to listItem call?
-          // update item with ingredient list
+          // update item with ingredient list or pop-up modal with ingredient list
         });
-    }.bind(this);
+    };
   })
   .component('app', {
     bindings: {

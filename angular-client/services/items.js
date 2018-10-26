@@ -41,8 +41,10 @@ angular.module('app')
           // functionality in app.js to update view
           console.log(data, 'services search line 42');
           if (callback) {
-            callback(data);
+            callback(data, 'search data in service');
           }
+          console.log(data);
+          return data;
         })
         .catch((err) => {
           console.log(err);

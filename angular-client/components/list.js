@@ -5,7 +5,6 @@ angular.module('app')
       feature: '<',
     },
     controller() {
-      console.log(this.items);
     },
     templateUrl: '/templates/list.html',
   });
