@@ -43,8 +43,7 @@ angular.module('app')
           if (callback) {
             callback(data, 'search data in service');
           }
-          console.log(data);
-          return data;
+          // return data;
         })
         .catch((err) => {
           console.log(err);

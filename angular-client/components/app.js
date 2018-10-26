@@ -1,21 +1,24 @@
 angular.module('app')
   .controller('AppCtrl', function appCtrl(itemsService) {
-    itemsService.getAll((data) => {
-      // maybe reverse so new gets added to top
-      this.items = data.slice(-6);
-      console.log(this.items);
-    });
+    this.updateList = () => {
+      // attempting to reuse this function
+      itemsService.getAll((data) => {
+        // maybe reverse so new gets added to top
+        this.items = data.slice(-6).reverse();
+        console.log(this.items);
+      });
+    };
     this.searchResults = (input) => {
       // search and rerender page add updateList to search as callback
       // rerender page with 5 from search
-      Promise.resolve(itemsService.search(input))
-      .then((res) => {
-        console.log(res, 'data from search');
-        this.updateList(res);
+      itemsService.search(input, (response) => {
+        console.log(response.data, 'data from search, new items app.js line 12');
+        if (response.data.length) {
+          setTimeout(() => {
+            this.updateList();
+          }, 1500);
+        }
       });
-    };
-    this.updateList = (items) => {
-      this.items = items;
     };
     this.featureItem = (itemName) => {
       // function that adds ingredient list to item
@@ -24,6 +27,9 @@ angular.module('app')
           // send response to listItem call?
           // update item with ingredient list or pop-up modal with ingredient list
         });
+    };
+    this.$onInit = () => {
+      this.updateList();
     };
   })
   .component('app', {
